@@ -3,7 +3,7 @@
 Level 3 Games Development student at Belfast Metropolitan College.
 Unreal Engine, C++, game audio.
 
-**Portfolio:** https://toleathlobhair-dev.github.io/
+**Portfolio:** https://toleathlobhair-dev.github.io/web
 
 ## What is in here
 
