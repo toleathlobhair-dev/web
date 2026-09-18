@@ -1,16 +1,15 @@
-## Hi there 👋
+# Tíarnan Pól Ó Leathlobhair
 
-<!--
-**toleathlobhair-dev/toleathlobhair-dev** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Level 3 Games Development student at Belfast Metropolitan College.
+Unreal Engine, C++, game audio.
 
-Here are some ideas to get you started:
+**Portfolio:** https://toleathlobhair-dev.github.io/
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## What is in here
+
+The source for my portfolio site. Built with hand-written HTML and CSS,
+hosted on GitHub Pages.
+
+- `index.html` - the page itself
+- `style.css` - all the styling
+- `images/` - screenshots and thumbnails
