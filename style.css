@@ -1,263 +1,396 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+/* =========================================================
+   Portfolio stylesheet
+   Change the colours and fonts here at the top; everything
+   below uses these values, so one edit updates the whole site.
+   ========================================================= */
 
-  <!-- CHANGE THIS: your name goes in the browser tab and in Google results -->
-  <title>Your Name — Games Development Portfolio</title>
-  <meta name="description" content="Games Development student at Belfast Metropolitan College. Unreal Engine, C++, level design and game audio.">
+:root {
+  --bg:        #0E0E14;   /* page background — near black, not pure black */
+  --surface:   #16161F;   /* cards and panels */
+  --line:      #2A2A38;   /* borders and dividers */
+  --text:      #E8E8F0;   /* body text */
+  --muted:     #9A9AB0;   /* secondary text */
+  --accent:    #FF5A1F;   /* links, highlights, the one loud colour */
+  --accent-2:  #00D6D6;   /* a second accent, used sparingly */
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  --display: "Space Grotesk", system-ui, sans-serif;
+  --body:    "Inter", system-ui, -apple-system, sans-serif;
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="logo" href="#top">Your Name</a>
-      <nav class="site-nav">
-        <a href="#showreel">Showreel</a>
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+  --radius: 10px;
+  --max:    1100px;
+}
 
-  <main id="top">
+/* ---- reset ---- */
+* {
+  box-sizing: border-box;
+}
 
-    <!-- ============ HERO ============ -->
-    <section class="hero">
-      <div class="container">
-        <p class="kicker">Games Development · Belfast Met</p>
-        <h1>Your Name</h1>
-        <p class="tagline">
-          First-year Games Development student building games in Unreal Engine 5.
-          Gameplay programming in C++, level design, and game audio.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#showreel">Watch the showreel</a>
-          <a class="btn" href="#work">See the work</a>
-        </div>
-      </div>
-    </section>
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
 
-    <!-- ============ SHOWREEL ============ -->
-    <section class="section" id="showreel">
-      <div class="container">
-        <p class="section-label">01 — Showreel</p>
-        <h2>First Year Showreel</h2>
-        <p class="section-intro">
-          Ninety seconds of everything I built this year: gameplay, levels,
-          models and audio. Full breakdowns of each piece are below.
-        </p>
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 
-        <!-- CHANGE THIS: replace VIDEO_ID with the id from your YouTube URL.
-             youtube.com/watch?v=dQw4w9WgXcQ  ->  the id is dQw4w9WgXcQ
-             Use the /embed/ address, not the /watch address. -->
-        <div class="video">
-          <iframe
-            src="https://www.youtube.com/embed/VIDEO_ID"
-            title="Your Name — First Year Showreel"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
-        </div>
+a {
+  color: var(--accent);
+}
 
-        <p class="video-caption">
-          Music: <em>Track name</em> by Artist, used under licence.
-          <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank" rel="noopener">Watch on YouTube</a>
-        </p>
-      </div>
-    </section>
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+}
 
-    <!-- ============ WORK ============ -->
-    <section class="section" id="work">
-      <div class="container">
-        <p class="section-label">02 — Selected work</p>
-        <h2>What I built this year</h2>
-        <p class="section-intro">
-          Six projects from first year. Each one lists the tools, what I was
-          responsible for, and what I would do differently next time.
-        </p>
+:focus-visible {
+  outline: 3px solid var(--accent-2);
+  outline-offset: 3px;
+}
 
-        <div class="work-grid">
+/* ---- the centred column everything sits in ---- */
+.container {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
 
-          <!-- Copy one whole <article> block to add another project -->
-          <article class="project">
-            <img src="images/project-1.jpg" alt="Player character collecting spinning coins in a neon arena">
-            <div class="project-body">
-              <h3>Coin Rush</h3>
-              <p class="project-meta">Unreal Engine 5 · C++ · Solo · 2 weeks</p>
-              <p>
-                A timed arcade game written entirely in C++ with no Blueprints.
-                Twenty coins spawn at random positions and the player has thirty
-                seconds to collect them.
-              </p>
-              <p class="project-role">
-                <strong>My role:</strong> everything — gameplay classes, spawning,
-                scoring, HUD and the end-of-round state.
-              </p>
-            </div>
-          </article>
+/* ---- header ---- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(14, 14, 20, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
 
-          <article class="project">
-            <img src="images/project-2.jpg" alt="Greybox blockout of a warehouse level seen from above">
-            <div class="project-body">
-              <h3>Warehouse Blockout</h3>
-              <p class="project-meta">Unreal Engine 5 · Level design · Solo · 3 weeks</p>
-              <p>
-                A greyboxed stealth level built to a brief: three routes to the
-                objective, each favouring a different playstyle. Tested with six
-                classmates and re-cut twice after watching them play.
-              </p>
-              <p class="project-role">
-                <strong>My role:</strong> layout, pacing, sightlines, playtest notes
-                and iteration.
-              </p>
-            </div>
-          </article>
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
 
-          <article class="project">
-            <img src="images/project-3.jpg" alt="Low-poly sci-fi crate and barrel models on a turntable">
-            <div class="project-body">
-              <h3>Sci-Fi Prop Pack</h3>
-              <p class="project-meta">Blender · Substance Painter · Solo · 2 weeks</p>
-              <p>
-                Eight modular low-poly props under 1,500 triangles each, UV
-                unwrapped, textured, and imported into Unreal with correct scale
-                and collision.
-              </p>
-              <p class="project-role">
-                <strong>My role:</strong> modelling, UVs, texturing and engine import.
-              </p>
-            </div>
-          </article>
+.logo {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
 
-          <article class="project">
-            <img src="images/project-4.jpg" alt="Audio editing session showing layered footstep waveforms">
-            <div class="project-body">
-              <h3>Footsteps and Foley</h3>
-              <p class="project-meta">Reaper · Unreal MetaSounds · Solo · 1 week</p>
-              <p>
-                A surface-aware footstep system: recorded foley on four surfaces,
-                layered and randomised so the same step never plays twice in a row.
-              </p>
-              <p class="project-role">
-                <strong>My role:</strong> recording, editing, and implementation in engine.
-              </p>
-            </div>
-          </article>
+.site-nav {
+  display: flex;
+  gap: 26px;
+  flex-wrap: wrap;
+}
 
-          <article class="project">
-            <img src="images/project-5.jpg" alt="Two-dimensional platformer level with a character mid-jump">
-            <div class="project-body">
-              <h3>Skyline</h3>
-              <p class="project-meta">Unreal Engine 5 · Blueprints · Solo · 2 weeks</p>
-              <p>
-                A 2D platformer prototype exploring coyote time, jump buffering and
-                variable jump height — the small details that decide whether a jump
-                feels good.
-              </p>
-              <p class="project-role">
-                <strong>My role:</strong> movement system, camera, and level.
-              </p>
-            </div>
-          </article>
+.site-nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.15s;
+}
 
-          <article class="project">
-            <img src="images/project-6.jpg" alt="Game jam entry title screen with three team member names">
-            <div class="project-body">
-              <h3>48-Hour Game Jam: Signal Lost</h3>
-              <p class="project-meta">Unreal Engine 5 · Team of 3 · 48 hours</p>
-              <p>
-                A first game jam, built to the theme "no way back". Finished and
-                submitted with ten minutes to spare, which taught me more about
-                scoping than any lecture has.
-              </p>
-              <p class="project-role">
-                <strong>My role:</strong> gameplay programming and build packaging.
-              </p>
-            </div>
-          </article>
+.site-nav a:hover {
+  color: var(--text);
+}
 
-        </div>
-      </div>
-    </section>
+/* ---- hero ---- */
+.hero {
+  padding: 110px 0 90px;
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(900px 400px at 15% -10%, rgba(255, 90, 31, 0.16), transparent 65%),
+    radial-gradient(700px 400px at 90% 10%, rgba(0, 214, 214, 0.10), transparent 60%);
+}
 
-    <!-- ============ ABOUT ============ -->
-    <section class="section" id="about">
-      <div class="container">
-        <p class="section-label">03 — About</p>
-        <div class="about-grid">
-          <div>
-            <h2>About me</h2>
-            <p>
-              I am a first-year Games Development student at Belfast Metropolitan
-              College, Castlereagh campus. I came to the course from playing games
-              and taking them apart, and I am here to learn to build them properly.
-            </p>
-            <p>
-              I am most interested in gameplay programming — the systems that decide
-              how something feels to control. This year I have worked in C++ and
-              Blueprints, modelled and textured my own assets, and recorded and
-              implemented my own audio.
-            </p>
-            <p>
-              Next I want to go deeper into C++ and take on a longer team project.
-            </p>
-          </div>
-          <div>
-            <h3>Tools</h3>
-            <ul class="skill-list">
-              <li>Unreal Engine 5</li>
-              <li>C++ and Blueprints</li>
-              <li>Blender</li>
-              <li>Substance Painter</li>
-              <li>Reaper and Audacity</li>
-              <li>Git and GitHub</li>
-            </ul>
+.kicker {
+  font-family: var(--display);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 18px;
+}
 
-            <h3>Strengths</h3>
-            <ul class="skill-list">
-              <li>Gameplay programming</li>
-              <li>Level blockout and pacing</li>
-              <li>Sound design and implementation</li>
-              <li>Finishing things on a deadline</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+.hero h1 {
+  /* never smaller than 40px, never bigger than 88px, fluid in between */
+  font-size: clamp(40px, 9vw, 88px);
+  margin: 0 0 20px;
+}
 
-    <!-- ============ CONTACT ============ -->
-    <section class="section section-contact" id="contact">
-      <div class="container">
-        <p class="section-label">04 — Contact</p>
-        <h2>Get in touch</h2>
-        <p class="section-intro">
-          Open to work experience, collaborations and game jams.
-        </p>
-        <!-- CHANGE THESE: your real links -->
-        <div class="contact-links">
-          <a class="btn btn-primary" href="mailto:you@example.com">you@example.com</a>
-          <a class="btn" href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn" href="https://www.youtube.com/@yourchannel" target="_blank" rel="noopener">YouTube</a>
-          <a class="btn" href="https://yourusername.itch.io" target="_blank" rel="noopener">itch.io</a>
-        </div>
-      </div>
-    </section>
+.tagline {
+  font-size: 19px;
+  color: var(--muted);
+  max-width: 56ch;
+  margin: 0 0 34px;
+}
 
-  </main>
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>© 2026 Your Name · Games Development · Belfast Metropolitan College</p>
-      <p>Built by hand with HTML and CSS. Hosted on GitHub Pages.</p>
-    </div>
-  </footer>
+/* ---- buttons ---- */
+.btn {
+  display: inline-block;
+  padding: 13px 26px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  transition: transform 0.15s, border-color 0.15s, background 0.15s;
+}
 
-</body>
-</html>
+.btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #ff6f3d;
+}
+
+/* ---- sections ---- */
+.section {
+  padding: 90px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.section-label {
+  font-family: var(--display);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin: 0 0 14px;
+}
+
+.section h2 {
+  font-size: clamp(28px, 5vw, 44px);
+}
+
+.section-intro {
+  color: var(--muted);
+  max-width: 60ch;
+  font-size: 17px;
+  margin: 0 0 40px;
+}
+
+/* ---- showreel ---- */
+.video {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.video iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.video-caption {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 14px 0 0;
+}
+
+/* ---- project grid ---- */
+.work-grid {
+  display: grid;
+  /* as many columns as fit, each at least 300px wide */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 26px;
+}
+
+.project {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.18s, border-color 0.18s;
+}
+
+.project:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+.project img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-bottom: 1px solid var(--line);
+}
+
+.project-body {
+  padding: 22px 22px 24px;
+}
+
+.project h3 {
+  font-size: 21px;
+  margin: 0 0 6px;
+}
+
+.project-meta {
+  font-family: var(--display);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin: 0 0 14px;
+}
+
+.project p {
+  font-size: 15px;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+
+.project-role {
+  font-size: 14px;
+  color: var(--text);
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+  margin: 16px 0 0;
+}
+
+.project-role strong {
+  color: var(--accent);
+}
+
+/* ---- about ---- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 50px;
+}
+
+.about-grid p {
+  color: var(--muted);
+  margin: 0 0 16px;
+}
+
+.about-grid h3 {
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin: 0 0 14px;
+}
+
+.about-grid h3 + ul + h3 {
+  margin-top: 34px;
+}
+
+.skill-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.skill-list li {
+  padding: 9px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 15px;
+}
+
+/* ---- contact ---- */
+.section-contact {
+  text-align: center;
+}
+
+.section-contact .section-intro {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-links {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ---- footer ---- */
+.site-footer {
+  padding: 40px 0 60px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.site-footer p {
+  margin: 0 0 6px;
+}
+
+/* =========================================================
+   Small screens. Keep every media query together, at the
+   bottom of the file, so you always know where they are.
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+  .hero {
+    padding: 70px 0 60px;
+  }
+
+  .section {
+    padding: 60px 0;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .site-nav {
+    gap: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
