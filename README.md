@@ -1,7 +1,7 @@
 # Tíarnan Pól Ó Leathlobhair
 
 Level 3 Games Development student at Belfast Metropolitan College.
-Unreal Engine, C++, game audio.
+Unreal Engine, Blueprints, game audio.
 
 **Portfolio:** https://toleathlobhair-dev.github.io/web
 
